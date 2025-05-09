@@ -23,7 +23,7 @@ reset_changelog_config() {
 }
 
 tune_changelog_config() {
-  echo "🔧 Tuning changelog topic with aggressive compaction..."
+  echo "Tuning changelog topic with aggressive compaction..."
   $KAFKA_BIN/kafka-configs.sh --bootstrap-server $BROKER \
     --entity-type topics --entity-name "$TOPIC" \
     --alter \
@@ -32,7 +32,7 @@ tune_changelog_config() {
 
 run_test_variant() {
   local mode=$1
-  echo "🚀 Running recovery test: $mode"
+  echo " Running recovery test: $mode"
   bash reset_kafka_topics.sh
   python3 src/main/java/com/example/producer.py
   bash src/main/java/com/example/run_test.sh "$mode"
@@ -52,4 +52,4 @@ run_test_variant changelog-tuned
 # Summarize
 python3 metrics_collector.py
 
-echo "✅ Done. Compare 'changelog-default' vs 'changelog-tuned' in the metrics CSV."
+echo "Done. Compare 'changelog-default' vs 'changelog-tuned' in the metrics CSV."

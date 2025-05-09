@@ -15,7 +15,7 @@ cp "$APP_PATH" "$BACKUP_PATH"
 
 inject_standby_config() {
   local standby_count=$1
-  echo "🔧 Injecting NUM_STANDBY_REPLICAS = $standby_count"
+  echo "Injecting NUM_STANDBY_REPLICAS = $standby_count"
   sed -i '' "/StreamsConfig.BOOTSTRAP_SERVERS_CONFIG/a\\
 props.put(StreamsConfig.NUM_STANDBY_REPLICAS_CONFIG, $standby_count);" "$APP_PATH"
 }
@@ -29,14 +29,14 @@ reset_topics() {
   /Users/anushakabber/Desktop/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic input-topic --partitions 1 --replication-factor 1
   /Users/anushakabber/Desktop/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic output-topic --partitions 1 --replication-factor 1
   sleep 5
-  echo "🚀 Producing fresh timestamped data..."
+  echo " Producing fresh timestamped data..."
   python3 src/main/java/com/example/producer.py
   sleep 1
 }
 
 run_test() {
   local mode=$1
-  echo "🚀 Running test: $mode"
+  echo " Running test: $mode"
   bash src/main/java/com/example/run_test.sh "$mode"
 }
 
@@ -53,4 +53,4 @@ run_test standby
 
 # Restore original App.java
 cp "$BACKUP_PATH" "$APP_PATH"
-echo "✅ Done. App.java restored. Logs and metrics collected."
+echo "Done. App.java restored. Logs and metrics collected."

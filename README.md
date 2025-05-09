@@ -22,7 +22,7 @@ This project evaluates the **fault tolerance characteristics of Apache Kafka Str
 ├── reset_kafka_topics.sh               # Deletes and recreates Kafka topics before test runs
 ├── pom.xml                             # Maven build configuration with Kafka Streams deps
 └── README.md                           # You're here
-
+```
 
 ## ⚙️ Dependencies
 

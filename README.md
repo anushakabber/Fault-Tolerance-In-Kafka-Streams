@@ -6,20 +6,23 @@ This project evaluates the **fault tolerance characteristics of Apache Kafka Str
 
 ## 📁 Project Structure
 
-├── results/ # CSV results from multiple experiment batches
-│ ├── kafka_metrics_summary_*.csv
+```plaintext
+.
+├── results/                            # CSV results from multiple experiment batches
+│   ├── kafka_metrics_summary_*.csv     # Aggregated recovery/latency/throughput metrics
 │
 ├── src/main/java/com/example/
-│ └── App.java # Main Kafka Streams app with instrumentation
+│   └── App.java                        # Main Kafka Streams app with instrumentation
 │
-├── producer.py # Timestamped record producer to Kafka topic
-├── metrics_collector.py # Parses logs and extracts recovery/latency/throughput metrics
-├── run_test.sh # Simulates crash-restart for RocksDB or in-memory runs
-├── run_standby_test.sh # Tests recovery with vs without standby replicas
-├── run_changelog_comparison.sh # Tests recovery with default vs tuned changelog settings
-├── reset_kafka_topics.sh # Deletes and recreates Kafka topics before test runs
-├── pom.xml # Maven build configuration
-└── README.md # You're here
+├── producer.py                         # Timestamped record producer to Kafka topic
+├── metrics_collector.py               # Parses logs and extracts performance metrics
+├── run_test.sh                         # Simulates crash-restart for RocksDB or in-memory runs
+├── run_standby_test.sh                 # Tests recovery with vs without standby replicas
+├── run_changelog_comparison.sh         # Tests recovery with default vs tuned changelog settings
+├── reset_kafka_topics.sh               # Deletes and recreates Kafka topics before test runs
+├── pom.xml                             # Maven build configuration with Kafka Streams deps
+└── README.md                           # You're here
+
 
 ## ⚙️ Dependencies
 
